@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -94,6 +95,7 @@ public class SettingFragment extends Fragment {
             @Override
             public void onTime_buttonClick() {
                 ((MainActivity)getActivity()).getConnectedOutputThread().time();
+
             }
         });
     }

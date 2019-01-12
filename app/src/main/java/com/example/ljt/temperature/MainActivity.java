@@ -14,10 +14,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.ljt.temperature.Bluetooth.BluetoothConnect;
 import com.example.ljt.temperature.Bluetooth.BluetoothExistenceCheck;
@@ -25,6 +29,7 @@ import com.example.ljt.temperature.Bluetooth.NoBluetoothException;
 import com.example.ljt.temperature.Fragment.HomeFragment;
 import com.example.ljt.temperature.Fragment.ListViewDialog;
 import com.example.ljt.temperature.Fragment.SettingFragment;
+import com.example.ljt.temperature.Misc.StringAdapter;
 import com.example.ljt.temperature.Misc.ToastInContext;
 import com.example.ljt.temperature.Misc.DealFragmentInID;
 import com.example.ljt.temperature.Setting.Setting;
@@ -32,10 +37,15 @@ import com.example.ljt.temperature.Setting.Setting;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
     public static final int Socket = 2;
+    public static final int TIME = 3;
+    public static final int TEMP_I = 4;
+    public static final int TEMP_O = 5;
     private InputStream inputStream;
     private OutputStream outputStream;
     private NavigationDeal deal;
@@ -53,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         return connectedOutputThread;
     }
 
-    private Handler handler = new Handler() {
+    private Handler handler/* = new Handler() {
         public void handleMessage(Message message) {
             // Log.v("LJTDL", handler.toString());
             switch (message.what) {
@@ -66,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
-    };
+    }*/;
+
 
     public Handler getHandler() {
         return handler;
@@ -97,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if (connectedInputThread != null)
                 connectedInputThread.cancel();
-            connectedInputThread = new ConnectedInputThread(tmpIn);
+            connectedInputThread = new ConnectedInputThread(tmpIn, MainActivity.this);
             connectedInputThread.start();
             if (connectedOutputThread != null)
                 connectedOutputThread.cancel();
@@ -129,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Fragment[] fragments = {new HomeFragment(), new SettingFragment()};
         final NavigationDeal deal = new NavigationDeal((BottomNavigationView) findViewById(R.id.navigation), getSupportFragmentManager(), R.id.fragmentFrame, fragments); //new HomeFragment(), new SettingFragment());
+
         deal.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -156,6 +168,30 @@ public class MainActivity extends AppCompatActivity {
         } catch (NoBluetoothException ex) {
             ToastString("该设备不存在蓝牙。");
         }
+
+        handler = new Handler() {
+            public void handleMessage(Message message) {
+                // Log.v("LJTDL", handler.toString());
+                switch (message.what) {
+                    case Socket:
+                        // Log.v("LJTDL", handler.toString());
+                        if (connectedThread != null)
+                            connectedThread.cancel();
+                        connectedThread = new ConnectedThread((BluetoothConnect.MessageBackObj) message.obj);
+                        connectedThread.start();
+                        break;
+                    case TIME:
+                        ((TextView) deal.getFragmentByClass(SettingFragment.class).getView().findViewById(R.id.time_label)).setText(message.obj.toString());
+                        break;
+                    case TEMP_I:
+                        ((HomeFragment) deal.getFragmentByClass(HomeFragment.class)).getStringList().add(message.obj.toString());
+
+                        break;
+                    case TEMP_O:
+                        break;
+                }
+            }
+        };
     }
 
     @Override

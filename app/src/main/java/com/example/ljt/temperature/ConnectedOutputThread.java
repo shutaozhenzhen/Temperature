@@ -37,7 +37,9 @@ public class ConnectedOutputThread extends Thread {
     }
     public void tempF(double t){
         try {
-            mmoutStream.write((String.valueOf(t)+"f").getBytes());
+            Log.v("LJTDL", (String.format("%.2f", t)+"f"));
+            mmoutStream.write((String.format("%.2f", t)+"f").getBytes());
+
         } catch (IOException e) {
             e.printStackTrace();
         }

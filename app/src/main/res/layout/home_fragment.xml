@@ -93,7 +93,8 @@
                 android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="number"
-
+                android:imeOptions="actionSend"
+                android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/alarm_label"
                 app:layout_constraintTop_toTopOf="parent" />

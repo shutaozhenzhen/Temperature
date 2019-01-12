@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ljt.temperature.R;
+import com.github.mikephil.charting.charts.LineChart;
 
 public class TemperatureChartFragment extends Fragment {
     @Nullable

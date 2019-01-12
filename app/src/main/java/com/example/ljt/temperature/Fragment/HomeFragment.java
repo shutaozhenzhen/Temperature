@@ -8,26 +8,56 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.ljt.temperature.MainActivity;
 import com.example.ljt.temperature.Misc.StringAdapter;
 import com.example.ljt.temperature.R;
+import com.github.mikephil.charting.charts.LineChart;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class HomeFragment extends Fragment {
+    private List<String> stringList = new ArrayList<>();
+
+    public List<String> getStringList() {
+        return stringList;
+    }
+
+    public void setStringList(List<String> stringList) {
+        this.stringList = stringList;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
-        List<String> stringList = new ArrayList<>();
+
+        final EditText editText = view.findViewById(R.id.alarm_input);
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEND || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    double alarm = Double.parseDouble(editText.getText().toString());
+                    ((MainActivity) getActivity()).getConnectedOutputThread().tempF(alarm);
+                    return true;
+                }
+                return false;
+
+            }
+        });
+
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        stringList.add("try");
-        stringList.add("try2");
+/*        stringList.add("try");
+        stringList.add("try2");*/
         StringAdapter adapter = new StringAdapter(stringList);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.show_recyclerView);
         recyclerView.setLayoutManager(manager);
@@ -38,19 +68,19 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("LJTlog","resume");
+        Log.d("LJTlog", "resume");
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.d("LJTlog","start");
+        Log.d("LJTlog", "start");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.d("LJTlog","Pause");
+        Log.d("LJTlog", "Pause");
     }
     /*    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
