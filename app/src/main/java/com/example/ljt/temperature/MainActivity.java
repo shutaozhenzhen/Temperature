@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         return deal;
     }
 
-    private Handler handler = new Handler() {
+    private  Handler handler = new Handler() {
         public void handleMessage(Message message) {
            // Log.v("LJTDL", handler.toString());
             switch (message.what) {
@@ -97,50 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 connectedOutputThread.cancel();
             connectedOutputThread = new ConnectedOutputThread(tmpOut);
             connectedOutputThread.start();
-        }/*
-
-            try {
-                mmOutStream.write("r".getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            while (true) {
-                try {
-                    int bytesRead = 0;
-                    int bytesToRead = 1024;
-                    while (bytesRead < bytesToRead) {
-                        byte[] bytes = new byte[bytesToRead - bytesRead];
-                        int in;
-                        do {
-                            in = mmInStream.read();
-                            if (in == '\n') break;
-                            else if (in != '\r' && in != ' ') {
-                                bytes[bytesRead] = (byte) in;
-                                bytesRead++;
-                            }
-                        }
-                        while (in != -1); //&& in != '\n');
-                        if (bytesRead > 0) {
-                            if (isReceiveAction(bytes[bytesRead - 1])) {
-                                Log.v("LJTDL", (new String(bytes, 0, bytesRead - 1)));
-                            } else
-                                Log.e("LJTDL", (new String(bytes, 0, bytesRead - 1)));
-                        }
-                        bytesRead = 0;
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
-
-        *//* Call this from the main activity to send data to the remote device *//*
-        public void write(byte[] bytes) {
-            try {
-                mmOutStream.write(bytes);
-            } catch (IOException e) {
-            }
-        }*/
 
         /* Call this from the main activity to shutdown the connection */
         public void cancel() {
@@ -160,28 +117,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
-        public MainFragments getMainFragments() {
-            return mainFragments;
-        }*/
-    //private MainFragments mainFragments = new MainFragments();
-    /*private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            //Setting setting = new Setting(MainActivity.this);
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mainFragments.showHome();
-                    return true;
-                case R.id.navigation_setting:
-                    mainFragments.showSetting();
-                    return true;
-            }
-            return false;
-        }
-    };
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -196,16 +131,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_home:
                         deal.hideFragment(deal.getFragmentByClass(SettingFragment.class));
                         deal.showFragment(deal.getFragmentByClass(HomeFragment.class));
-  /*                      deal.hideFragment(fragments[1]);
-                       deal.showFragment(fragments[0]);*/
+
                         return true;
                     case R.id.navigation_setting:
                         deal.hideFragment(deal.getFragmentByClass(HomeFragment.class));
                         deal.showFragment(deal.getFragmentByClass(SettingFragment.class));
-                        //deal.hideFragment(fragments[0]);
-                        //deal.showFragment(fragments[1]);
-                        //deal.showFragment(deal.getFragmentByClass(SettingFragment.class));
-                        //mainFragments.showSetting();
                         return true;
                 }
                 return false;
@@ -213,61 +143,15 @@ public class MainActivity extends AppCompatActivity {
         });
         deal.hideAllFragment();
         ((BottomNavigationView) findViewById(R.id.navigation)).setSelectedItemId(R.id.navigation_setting);
-        /*  mainFragments.init();
-        mainFragments.showSetting();*/
+
         try {
             BluetoothAdapter mBluetoothAdapter = BluetoothExistenceCheck.getBluetoothAdapter();
-/*            if (!mBluetoothAdapter.isEnabled()) {
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-            }*/
+
         } catch (NoBluetoothException ex) {
             ToastString("该设备不存在蓝牙。");
         }
-       /* BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);*/
     }
 
-    /*
-        public class MainFragments {
-            private Fragment homeFragment, settingFragment;
-            private FragmentManager manager = getSupportFragmentManager();
-            private final int id = R.id.fragmentFrame;
-            private DealFragmentInID deal = new DealFragmentInID(id, manager);
-            public MainFragments init() {
-                MainFragments mainFragments = new MainFragments();
-                homeFragment = add(new HomeFragment());
-                settingFragment = add(new SettingFragment());
-                return mainFragments;
-            }
-            public void showHome() {
-                hideAll();
-                deal.showFragment(homeFragment);
-            }
-            public void showSetting() {
-                hideAll();
-                deal.showFragment(settingFragment);
-            }
-            private void hideAll() {
-                deal.hideFragment(homeFragment);
-                deal.hideFragment(settingFragment);
-            }
-            private String getTag(Object object) {
-                return object.getClass().getName();
-            }
-            private Fragment add(Fragment fragment) {
-                deal.addWithFragment(fragment, fragment.getTag());
-                return fragment;
-            }
-            public HomeFragment getHomeFragment() {
-                return (HomeFragment) homeFragment;
-            }
-            public SettingFragment getSettingFragment() {
-                return (SettingFragment) settingFragment;
-            }
-            private MainFragments() {
-            }
-        }*/
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
