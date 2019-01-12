@@ -9,35 +9,48 @@ import android.widget.TextView;
 
 import com.example.ljt.temperature.R;
 
-public class SliderLayout extends ConstraintLayout {
+public class TemperatureSliderLayout extends ConstraintLayout {
     private Context context;
     private TextView minLabel;
     private TextView maxLabel;
     private TextView valueLabel;
     private SeekBar seekBar;
     private Integer max;
+    private OnSliderChangeListener onSliderChangeListener;
 
-    private final Integer MODE_NORMAL = 0, MODE_LOG = 1;
-    private Integer mode = MODE_NORMAL;
-
-    public Integer getMode() {
-        return mode;
+    private Integer doubleToInt(double in) {
+        return (int) (in * 100);
     }
 
-    public void setMode(Integer mode) {
-        this.mode = mode;
+    private double intToDouble(int in) {
+        return (in * 1.0 / 100.0);
     }
+
+    public void setOnSliderChangeListener(OnSliderChangeListener listener) {
+        this.onSliderChangeListener = listener;
+    }
+
+    public interface OnSliderChangeListener {
+        void onProgressChanged(TemperatureSliderLayout slider, int progress, boolean fromUser);
+
+    }
+
 
     public void setValue(Integer value) {
-        seekBar.setProgress(value);
+        seekBar.setProgress(doubleToInt(value));
+    }
+
+    public double getValue() {
+        return intToDouble(seekBar.getProgress());
     }
 
     public void setMax(Integer max) {
-        if (max < seekBar.getProgress()) {
-            setValue(max);
+        Integer maxT = doubleToInt(max);
+        if (maxT < seekBar.getProgress()) {
+            setValue(maxT);
         }
-        seekBar.setMax(max);
-        this.max = max;
+        seekBar.setMax(maxT);
+        this.max = maxT;
         maxLabel.setText(String.valueOf(max));
     }
 
@@ -51,15 +64,11 @@ public class SliderLayout extends ConstraintLayout {
     }
 
     private void setLabelValue() {
-        if (mode == MODE_NORMAL) {
-            valueLabel.setText(String.valueOf(seekBar.getProgress()));
-        } else if (mode == MODE_LOG) {
-            valueLabel.setText(String.valueOf(max * (Math.log10(seekBar.getProgress()) - Math.log10(max))));
-        }
-
+        valueLabel.setText(String.format("%.2f",getValue()));
     }
 
-    public SliderLayout(Context context, AttributeSet attrs) {
+
+    public TemperatureSliderLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         LayoutInflater.from(context).inflate(R.layout.seekbar_layout, this);

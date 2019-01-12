@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.ljt.temperature.Layout.SliderDiscreteLayout;
 import com.example.ljt.temperature.MainActivity;

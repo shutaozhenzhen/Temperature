@@ -10,12 +10,12 @@ import android.widget.TextView;
 import com.example.ljt.temperature.R;
 
 public class SliderDiscreteLayout extends ConstraintLayout {
-    private Context context;
-    private TextView minLabel;
-    private TextView maxLabel;
-    private TextView valueLabel;
-    private SeekBar seekBar;
-    private Integer max;
+    protected Context context;
+    protected TextView minLabel;
+    protected TextView maxLabel;
+    protected TextView valueLabel;
+    protected SeekBar seekBar;
+    protected Integer max;
 
     public void setOnSliderChangeListener(OnSliderChangeListener listener) {
         this.onSliderChangeListener = listener;

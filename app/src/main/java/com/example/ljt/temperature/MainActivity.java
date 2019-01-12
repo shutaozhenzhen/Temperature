@@ -2,25 +2,17 @@ package com.example.ljt.temperature;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.ljt.temperature.Bluetooth.BluetoothConnect;
@@ -29,16 +21,11 @@ import com.example.ljt.temperature.Bluetooth.NoBluetoothException;
 import com.example.ljt.temperature.Fragment.HomeFragment;
 import com.example.ljt.temperature.Fragment.ListViewDialog;
 import com.example.ljt.temperature.Fragment.SettingFragment;
-import com.example.ljt.temperature.Misc.StringAdapter;
 import com.example.ljt.temperature.Misc.ToastInContext;
-import com.example.ljt.temperature.Misc.DealFragmentInID;
-import com.example.ljt.temperature.Setting.Setting;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;

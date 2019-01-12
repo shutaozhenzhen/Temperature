@@ -16,10 +16,13 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ljt.temperature.Layout.SliderDiscreteLayout;
 import com.example.ljt.temperature.MainActivity;
+import com.example.ljt.temperature.Misc.DealFragmentInID;
 import com.example.ljt.temperature.Misc.StringAdapter;
 import com.example.ljt.temperature.R;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     private List<String> stringList = new ArrayList<>();
+    //private List<Entry> entryList=new ArrayList<>();
 
     public List<String> getStringList() {
         return stringList;
@@ -40,7 +44,12 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
-
+        DealFragmentInID dealFragmentInID = new DealFragmentInID(R.id.temperature_view, getActivity().getSupportFragmentManager());
+        TemperatureSliderFragment sliderFragment = new TemperatureSliderFragment();
+        dealFragmentInID.replaceWithFragment(sliderFragment, sliderFragment.getClass().getName());
+        SliderDiscreteLayout sliderDiscreteLayout = view.findViewById(R.id.temperature_slider);
+/*        TemperatureChartFragment chartFragment = new TemperatureChartFragment();
+        dealFragmentInID.replaceWithFragment(chartFragment, TemperatureChartFragment.class.getName());*/
         final EditText editText = view.findViewById(R.id.alarm_input);
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
