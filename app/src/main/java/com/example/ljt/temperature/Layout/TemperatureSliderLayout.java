@@ -36,7 +36,7 @@ public class TemperatureSliderLayout extends ConstraintLayout {
     }
 
 
-    public void setValue(Integer value) {
+    public void setValue(double value) {
         seekBar.setProgress(doubleToInt(value));
     }
 

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.ljt.temperature.Layout.SliderDiscreteLayout;
+import com.example.ljt.temperature.Layout.TemperatureSliderLayout;
 import com.example.ljt.temperature.MainActivity;
 import com.example.ljt.temperature.Misc.DealFragmentInID;
 import com.example.ljt.temperature.Misc.StringAdapter;
@@ -30,7 +32,17 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     private List<String> stringList = new ArrayList<>();
+    private TemperatureSliderFragment sliderFragment;
     //private List<Entry> entryList=new ArrayList<>();
+/*    public interface OnProgressChanged{
+        void onProgressChanged(TemperatureSliderLayout slider, int progress, boolean fromUser);
+    }
+
+    public void setOnProgressChanged(OnProgressChanged onProgressChanged) {
+        this.onProgressChanged = onProgressChanged;
+    }
+
+    private OnProgressChanged onProgressChanged;*/
 
     public List<String> getStringList() {
         return stringList;
@@ -39,15 +51,21 @@ public class HomeFragment extends Fragment {
     public void setStringList(List<String> stringList) {
         this.stringList = stringList;
     }
+    public void setTemperature(double temperature){
+        if( sliderFragment!=null)
+        sliderFragment.setValue(temperature);
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
-        DealFragmentInID dealFragmentInID = new DealFragmentInID(R.id.temperature_view, getActivity().getSupportFragmentManager());
-        TemperatureSliderFragment sliderFragment = new TemperatureSliderFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        DealFragmentInID dealFragmentInID = new DealFragmentInID(R.id.temperature_view, fragmentManager);
+         sliderFragment = new TemperatureSliderFragment();
         dealFragmentInID.replaceWithFragment(sliderFragment, sliderFragment.getClass().getName());
-        SliderDiscreteLayout sliderDiscreteLayout = view.findViewById(R.id.temperature_slider);
+
+
 /*        TemperatureChartFragment chartFragment = new TemperatureChartFragment();
         dealFragmentInID.replaceWithFragment(chartFragment, TemperatureChartFragment.class.getName());*/
         final EditText editText = view.findViewById(R.id.alarm_input);
@@ -71,6 +89,7 @@ public class HomeFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.show_recyclerView);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
+
         return view;
     }
 

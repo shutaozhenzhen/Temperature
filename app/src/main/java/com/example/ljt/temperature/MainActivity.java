@@ -21,6 +21,7 @@ import com.example.ljt.temperature.Bluetooth.NoBluetoothException;
 import com.example.ljt.temperature.Fragment.HomeFragment;
 import com.example.ljt.temperature.Fragment.ListViewDialog;
 import com.example.ljt.temperature.Fragment.SettingFragment;
+import com.example.ljt.temperature.Layout.TemperatureSliderLayout;
 import com.example.ljt.temperature.Misc.ToastInContext;
 
 import java.io.IOException;
@@ -175,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case TEMP_O:
+                        ((HomeFragment) deal.getFragmentByClass(HomeFragment.class)).setTemperature(Double.parseDouble(message.obj.toString()));
                         break;
                 }
             }
