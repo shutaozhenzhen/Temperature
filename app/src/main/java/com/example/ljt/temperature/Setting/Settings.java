@@ -7,6 +7,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.example.ljt.temperature.Layout.SliderDiscreteLayout;
+import com.example.ljt.temperature.MainActivity;
 import com.example.ljt.temperature.R;
 
 public class Settings {
@@ -22,7 +23,23 @@ public class Settings {
             LED_switch2,
             buzzer_switch;
     Button
-            discovery_button;
+            discovery_button,
+            time_button;
+    OnSettingChangeListener onSettingChangeListener;
+
+    public void setOnSettingChangeListener(OnSettingChangeListener onSettingChangeListener) {
+        this.onSettingChangeListener = onSettingChangeListener;
+    }
+
+    public interface OnSettingChangeListener {
+        void onLED_switch1Changed();
+
+        void onLED_switch2Changed();
+
+        void onBuzzer_switchChanged();
+
+        void onTime_buttonClick();
+    }
 
     public void init(final View view) {
         buzzer_slider = (SliderDiscreteLayout) view.findViewById(R.id.buzzer_slider);
@@ -32,50 +49,67 @@ public class Settings {
         LED_switch1 = (Switch) view.findViewById(R.id.LED_switch1);
         LED_switch2 = (Switch) view.findViewById(R.id.LED_switch2);
         buzzer_switch = (Switch) view.findViewById(R.id.buzzer_switch);
+        time_button = (Button) view.findViewById(R.id.time_button);
         bluetooth_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                    setBluetoothSwitch(isChecked);
-                    BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-                    //Button button = (Button) buttonView.getRootView().findViewById(R.id.bluetooth_discovery_button);
-                    if (isChecked) {
+                setBluetoothSwitch(isChecked);
+                BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                //Button button = (Button) buttonView.getRootView().findViewById(R.id.bluetooth_discovery_button);
+                if (isChecked) {
 
 
-                        bluetoothAdapter.enable();
-                        discovery_button.setEnabled(true);
+                    bluetoothAdapter.enable();
+                    discovery_button.setEnabled(true);
 
-                        //button.setEnabled(true);
-                    } else {
+                    //button.setEnabled(true);
+                } else {
 
-                        bluetoothAdapter.disable();
-                        discovery_button.setEnabled(false);
-                        //button.setEnabled(false);
-                    }
+                    bluetoothAdapter.disable();
+                    discovery_button.setEnabled(false);
+                    //button.setEnabled(false);
                 }
-
+            }
 
 
         });
         buzzer_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 setBuzzerSwitch(isChecked);
+                if (onSettingChangeListener != null) {
+                    onSettingChangeListener.onBuzzer_switchChanged();
+                }
             }
         });
         LED_switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setLedSwitch1(isChecked);
+                if (onSettingChangeListener != null) {
+                    onSettingChangeListener.onLED_switch1Changed();
+                }
             }
         });
         LED_switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setLedSwitch2(isChecked);
+                if (onSettingChangeListener != null) {
+                    onSettingChangeListener.onLED_switch2Changed();
+                }
             }
         });
-
+        time_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onSettingChangeListener != null) {
+                    onSettingChangeListener.onTime_buttonClick();
+                }
+            }
+        });
         buzzer_slider.setOnSliderChangeListener(new SliderDiscreteLayout.OnSliderChangeListener() {
             @Override
             public void onProgressChanged(SliderDiscreteLayout slider, int progress, boolean fromUser) {

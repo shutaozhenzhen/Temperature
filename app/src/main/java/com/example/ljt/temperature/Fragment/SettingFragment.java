@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.ljt.temperature.Bluetooth.BluetoothExistenceCheck;
 import com.example.ljt.temperature.Bluetooth.NoBluetoothException;
+import com.example.ljt.temperature.ConnectedOutputThread;
 import com.example.ljt.temperature.Layout.SliderDiscreteLayout;
 import com.example.ljt.temperature.MainActivity;
 import com.example.ljt.temperature.Misc.ToastInContext;
@@ -50,39 +51,9 @@ public class SettingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.setting_fragment, container, false);
         initAll(view);
-
-/*        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-        getActivity().registerReceiver(mReceiver, filter);*/
-
         return view;
     }
 
-   /* private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            // When discovery finds a device
-            if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)) {
-                // Get the BluetoothDevice object from the Intent
-                Integer nowState = intent.getParcelableExtra(BluetoothAdapter.EXTRA_STATE);
-                Integer preState = intent.getParcelableExtra(BluetoothAdapter.EXTRA_PREVIOUS_STATE);
-                if(nowState!=preState){
-                    if(nowState==BluetoothAdapter.STATE_ON){
-                        if(!setting.isBluetoothSwitch()){
-                            setting.setBluetoothSwitch(true);
-                        }
-
-                    }else if(nowState==BluetoothAdapter.STATE_OFF){
-                        if(setting.isBluetoothSwitch()){
-                            setting.setBluetoothSwitch(false);
-                        }
-                    }
-                }
-            }
-
-        }
-
-    };*/
 
     public void setClickable(View view, @IdRes int id) {
         ((Switch) view.findViewById(id)).setClickable(false);
@@ -90,8 +61,6 @@ public class SettingFragment extends Fragment {
 
     private void initAll(View view) {
         setting.init(view);
-        //initAllSwitch(view);
-        //initAllSlider(view);
         Button discovery = (Button) view.findViewById(R.id.bluetooth_discovery_button);
         discovery.setOnClickListener(new OnClickListener() {
             @Override
@@ -106,6 +75,27 @@ public class SettingFragment extends Fragment {
             setting.setBluetoothSwitchEnable(false);
             setting.setButtonEnable(false);
         }
+        setting.setOnSettingChangeListener(new Settings.OnSettingChangeListener() {
+            @Override
+            public void onLED_switch1Changed() {
+                ((MainActivity)getActivity()).getConnectedOutputThread().led();
+            }
+
+            @Override
+            public void onLED_switch2Changed() {
+
+            }
+
+            @Override
+            public void onBuzzer_switchChanged() {
+                ((MainActivity)getActivity()).getConnectedOutputThread().buzzer();
+            }
+
+            @Override
+            public void onTime_buttonClick() {
+                ((MainActivity)getActivity()).getConnectedOutputThread().time();
+            }
+        });
     }
 
 }

@@ -41,18 +41,24 @@ public class MainActivity extends AppCompatActivity {
     private NavigationDeal deal;
     private ConnectedThread connectedThread;
     private ConnectedInputThread connectedInputThread;
+
+
     private ConnectedOutputThread connectedOutputThread;
 
     public NavigationDeal getDeal() {
         return deal;
     }
 
-    private  Handler handler = new Handler() {
+    public ConnectedOutputThread getConnectedOutputThread() {
+        return connectedOutputThread;
+    }
+
+    private Handler handler = new Handler() {
         public void handleMessage(Message message) {
-           // Log.v("LJTDL", handler.toString());
+            // Log.v("LJTDL", handler.toString());
             switch (message.what) {
                 case Socket:
-                   // Log.v("LJTDL", handler.toString());
+                    // Log.v("LJTDL", handler.toString());
                     if (connectedThread != null)
                         connectedThread.cancel();
                     connectedThread = new ConnectedThread((BluetoothConnect.MessageBackObj) message.obj);
@@ -67,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class ConnectedThread extends Thread {
-        private  BluetoothSocket mmSocket;
+        private BluetoothSocket mmSocket;
 
         private final BluetoothConnect.MessageBackObj obj;
 
