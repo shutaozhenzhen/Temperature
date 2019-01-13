@@ -6,34 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/bluetooth_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/bluetooth_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="蓝牙设置："
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/bluetooth_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -41,96 +16,122 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bluetooth_label">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <Switch
-                android:id="@+id/bluetooth_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="蓝牙开关："
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/bluetooth_discovery_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="搜索"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/bluetooth_switch"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/buzzer_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bluetooth_layout">
-
-        <TextView
-            android:id="@+id/buzzer_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="蜂鸣器设置："
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buzzer_label">
-
-            <com.example.ljt.temperature.Layout.SliderDiscreteLayout
-                android:id="@+id/buzzer_slider"
+            <TextView
+                android:id="@+id/bluetooth_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:text="蓝牙设置："
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/buzzer_switch"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <!--
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bluetooth_label">
+
+                <Switch
+                    android:id="@+id/bluetooth_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="蓝牙开关："
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/bluetooth_discovery_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="搜索"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bluetooth_switch"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/buzzer_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bluetooth_layout">
+
+            <TextView
+                android:id="@+id/buzzer_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="蜂鸣器设置："
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buzzer_label">
+
+                <com.example.ljt.temperature.Layout.SliderDiscreteLayout
+                    android:id="@+id/buzzer_slider"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/buzzer_switch"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--
                        <SeekBar
                            android:id="@+id/buzzer_seekbar"
                            android:layout_width="0dp"
@@ -147,79 +148,66 @@
                            app:layout_constraintTop_toTopOf="@+id/buzzer_switch" />
                            -->
 
-                       <Switch
-                           android:id="@+id/buzzer_switch"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="8dp"
-                           android:layout_marginLeft="8dp"
-                           android:layout_marginTop="8dp"
-                           android:layout_marginBottom="8dp"
-                           android:text="蜂鸣器开关："
-                           app:layout_constraintBottom_toBottomOf="parent"
-                           app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toTopOf="parent" />
+                <Switch
+                    android:id="@+id/buzzer_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="蜂鸣器开关："
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                   </android.support.constraint.ConstraintLayout>
-               </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
 
-               <android.support.constraint.ConstraintLayout
-                   android:id="@+id/LED_layout"
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_marginStart="8dp"
-                   android:layout_marginLeft="8dp"
-                   android:layout_marginTop="8dp"
-                   android:layout_marginEnd="8dp"
-                   android:layout_marginRight="8dp"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@+id/buzzer_layout">
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/LED_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buzzer_layout">
 
-                   <TextView
-                       android:id="@+id/LED_label"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="8dp"
-                       android:layout_marginLeft="8dp"
-                       android:layout_marginTop="8dp"
-                       android:layout_marginEnd="8dp"
-                       android:layout_marginRight="8dp"
-                       android:text="LED设置："
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintHorizontal_bias="0.0"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/LED_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="LED设置："
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                   <android.support.constraint.ConstraintLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="8dp"
-                       android:layout_marginLeft="8dp"
-                       android:layout_marginTop="8dp"
-                       android:layout_marginEnd="8dp"
-                       android:layout_marginRight="8dp"
-                       android:layout_marginBottom="8dp"
-                       app:layout_constraintBottom_toBottomOf="parent"
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintHorizontal_bias="0.0"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toBottomOf="@+id/LED_label">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LED_label">
 
-                       <com.example.ljt.temperature.Layout.SliderDiscreteLayout
-                           android:id="@+id/LED_slider2"
-                           android:layout_width="0dp"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="8dp"
-                           android:layout_marginLeft="8dp"
-                           android:layout_marginTop="8dp"
-                           android:layout_marginEnd="8dp"
-                           android:layout_marginRight="8dp"
-                           app:layout_constraintBottom_toBottomOf="parent"
-                           app:layout_constraintEnd_toEndOf="parent"
-                           app:layout_constraintStart_toEndOf="@+id/LED_switch2"
-                           app:layout_constraintTop_toBottomOf="@+id/LED_slider1" />
-                       <!--
+                <!--
                        <SeekBar
                            android:id="@+id/LED_seekBar2"
                            android:layout_width="0dp"
@@ -235,31 +223,20 @@
                            app:layout_constraintStart_toEndOf="@+id/LED_switch2"
                            app:layout_constraintTop_toTopOf="@+id/LED_switch2" />
                            -->
-                       <Switch
-                           android:id="@+id/LED_switch2"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="8dp"
-                           android:layout_marginLeft="8dp"
-                           android:layout_marginBottom="8dp"
-                           android:text="灯2开关："
-                           app:layout_constraintBottom_toBottomOf="@+id/LED_slider2"
-                           app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toTopOf="@+id/LED_slider2" />
 
-                       <com.example.ljt.temperature.Layout.SliderDiscreteLayout
-                           android:id="@+id/LED_slider1"
-                           android:layout_width="0dp"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="8dp"
-                           android:layout_marginLeft="8dp"
-                           android:layout_marginTop="8dp"
-                           android:layout_marginEnd="8dp"
-                           android:layout_marginRight="8dp"
-                           app:layout_constraintEnd_toEndOf="parent"
-                           app:layout_constraintStart_toEndOf="@+id/LED_switch1"
-                           app:layout_constraintTop_toTopOf="parent" />
-                       <!--
+                <com.example.ljt.temperature.Layout.SliderDiscreteLayout
+                    android:id="@+id/LED_slider1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/LED_switch1"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--
                        <SeekBar
                            android:id="@+id/LED_seekBar1"
                            android:layout_width="0dp"
@@ -275,98 +252,100 @@
                            app:layout_constraintStart_toEndOf="@+id/LED_switch1"
                            app:layout_constraintTop_toTopOf="@+id/LED_switch1" />
                            -->
-                       <Switch
-                           android:id="@+id/LED_switch1"
-                           android:layout_width="wrap_content"
-                           android:layout_height="24dp"
-                           android:layout_marginStart="8dp"
-                           android:layout_marginLeft="8dp"
-                           android:layout_marginTop="8dp"
-                           android:text="灯1开关："
-                           app:layout_constraintBottom_toBottomOf="@+id/LED_slider1"
-                           app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toTopOf="@+id/LED_slider1" />
+                <Switch
+                    android:id="@+id/LED_switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="灯1开关："
+                    app:layout_constraintBottom_toBottomOf="@+id/LED_slider1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/LED_slider1" />
 
-                       <TextView
-                           android:id="@+id/LED_light_label"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_marginTop="8dp"
-                           android:layout_marginBottom="8dp"
-                           android:text="亮度"
-                           app:layout_constraintBottom_toBottomOf="parent"
-                           app:layout_constraintEnd_toEndOf="@+id/LED_slider2"
-                           app:layout_constraintStart_toStartOf="@+id/LED_slider2"
-                           app:layout_constraintTop_toBottomOf="@+id/LED_slider2" />
-                   </android.support.constraint.ConstraintLayout>
-               </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/LED_light_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="亮度"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/LED_slider1"
+                    app:layout_constraintStart_toStartOf="@+id/LED_slider1"
+                    app:layout_constraintTop_toBottomOf="@+id/LED_slider1" />
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
 
-               <android.support.constraint.ConstraintLayout
-                   android:id="@+id/Temperature_layout"
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_marginStart="8dp"
-                   android:layout_marginLeft="8dp"
-                   android:layout_marginTop="8dp"
-                   android:layout_marginEnd="8dp"
-                   android:layout_marginRight="8dp"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@+id/LED_layout">
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/Temperature_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LED_layout">
 
-                   <TextView
-                       android:id="@+id/temperature_label"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="8dp"
-                       android:layout_marginLeft="8dp"
-                       android:layout_marginTop="8dp"
-                       android:layout_marginEnd="7dp"
-                       android:layout_marginRight="7dp"
-                       android:text="时间同步："
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/temperature_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginRight="7dp"
+                android:text="时间同步："
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                   <android.support.constraint.ConstraintLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="8dp"
-                       android:layout_marginLeft="8dp"
-                       android:layout_marginTop="8dp"
-                       android:layout_marginEnd="8dp"
-                       android:layout_marginRight="8dp"
-                       android:layout_marginBottom="8dp"
-                       app:layout_constraintBottom_toBottomOf="parent"
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toBottomOf="@+id/temperature_label">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/temperature_label">
 
-                       <Button
-                           android:id="@+id/time_button"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="8dp"
-                           android:layout_marginLeft="8dp"
-                           android:layout_marginTop="8dp"
-                           android:text="同步"
-                           app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toTopOf="parent" />
+                <Button
+                    android:id="@+id/time_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="同步"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                       <TextView
-                           android:id="@+id/time_label"
-                           android:layout_width="0dp"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="8dp"
-                           android:layout_marginLeft="8dp"
-                           android:layout_marginEnd="8dp"
-                           android:layout_marginRight="8dp"
-                           android:layout_marginBottom="8dp"
-                           app:layout_constraintBottom_toBottomOf="@+id/time_button"
-                           app:layout_constraintEnd_toEndOf="parent"
-                           app:layout_constraintStart_toEndOf="@+id/time_button"
-                           app:layout_constraintTop_toTopOf="@+id/time_button" />
-                   </android.support.constraint.ConstraintLayout>
-               </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/time_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/time_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/time_button"
+                    app:layout_constraintTop_toTopOf="@+id/time_button" />
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
 
-           </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

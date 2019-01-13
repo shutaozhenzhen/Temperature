@@ -32,6 +32,7 @@ public class ConnectedInputThread extends Thread {
                 return true;
             case 'i':
                 mainActivity.getHandler().obtainMessage(MainActivity.TEMP_I, string).sendToTarget();
+                return true;
             case 'o':
                 mainActivity.getHandler().obtainMessage(MainActivity.TEMP_O, string).sendToTarget();
                 return true;

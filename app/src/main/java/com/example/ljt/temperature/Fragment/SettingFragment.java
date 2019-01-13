@@ -67,10 +67,10 @@ public class SettingFragment extends Fragment {
                 ((MainActivity)getActivity()).getConnectedOutputThread().led();
             }
 
-            @Override
-            public void onLED_switch2Changed() {
+/*                 @Override
+                public void onLED_switch2Changed() {
 
-            }
+            }*/
 
             @Override
             public void onBuzzer_switchChanged() {

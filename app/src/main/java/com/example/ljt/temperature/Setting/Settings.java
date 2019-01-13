@@ -14,15 +14,16 @@ import com.example.ljt.temperature.R;
 public class Settings {
     SliderDiscreteLayout
             buzzer_slider,
-            LED_slider1,
-            LED_slider2;
+            LED_slider1;
+            //LED_slider2;
 
     Switch
 
             bluetooth_switch,
             LED_switch1,
-            LED_switch2,
+
             buzzer_switch;
+    //LED_switch2,
     Button
             discovery_button,
             time_button;
@@ -35,7 +36,7 @@ public class Settings {
     public interface OnSettingChangeListener {
         void onLED_switch1Changed();
 
-        void onLED_switch2Changed();
+        //void onLED_switch2Changed();
 
         void onBuzzer_switchChanged();
 
@@ -45,10 +46,10 @@ public class Settings {
     public void init(final View view) {
         buzzer_slider = (SliderDiscreteLayout) view.findViewById(R.id.buzzer_slider);
         LED_slider1 = (SliderDiscreteLayout) view.findViewById(R.id.LED_slider1);
-        LED_slider2 = (SliderDiscreteLayout) view.findViewById(R.id.LED_slider2);
+        //LED_slider2 = (SliderDiscreteLayout) view.findViewById(R.id.LED_slider2);
         bluetooth_switch = (Switch) view.findViewById(R.id.bluetooth_switch);
         LED_switch1 = (Switch) view.findViewById(R.id.LED_switch1);
-        LED_switch2 = (Switch) view.findViewById(R.id.LED_switch2);
+        //LED_switch2 = (Switch) view.findViewById(R.id.LED_switch2);
         buzzer_switch = (Switch) view.findViewById(R.id.buzzer_switch);
         time_button = (Button) view.findViewById(R.id.time_button);
         bluetooth_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -94,7 +95,7 @@ public class Settings {
                 }
             }
         });
-        LED_switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*LED_switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setLedSwitch2(isChecked);
@@ -102,7 +103,7 @@ public class Settings {
                     onSettingChangeListener.onLED_switch2Changed();
                 }
             }
-        });
+        });*/
         time_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,14 +127,14 @@ public class Settings {
                 //new  ToastInContext(getActivity()).toast("try");
             }
         });
-
+/*
         LED_slider2.setOnSliderChangeListener(new SliderDiscreteLayout.OnSliderChangeListener() {
             @Override
             public void onProgressChanged(SliderDiscreteLayout slider, int progress, boolean fromUser) {
                 setLedSlider2(slider.getValue());
                 //new  ToastInContext(getActivity()).toast("try");
             }
-        });
+        });*/
         discovery_button = (Button) view.findViewById(R.id.bluetooth_discovery_button);
         buzzer_slider.setMode(1);
 
@@ -179,13 +180,15 @@ public class Settings {
         this.LED_switch1.setChecked(ledSwitch1);
     }
 
+/*
     public boolean isLedSwitch2() {
         return LED_switch2.isChecked();
     }
+*/
 
-    public void setLedSwitch2(boolean ledSwitch2) {
+/*    public void setLedSwitch2(boolean ledSwitch2) {
         this.LED_switch2.setChecked(ledSwitch2);
-    }
+    }*/
 
     public Integer getBuzzerSlider() {
         return buzzer_slider.getValue();
@@ -203,11 +206,11 @@ public class Settings {
         this.LED_slider1.setValue(ledSlider1);
     }
 
-    public Integer getLedSlider2() {
+/*    public Integer getLedSlider2() {
         return LED_slider2.getValue();
     }
 
     public void setLedSlider2(Integer ledSlider2) {
         this.LED_slider2.setValue(ledSlider2);
-    }
+    }*/
 }
