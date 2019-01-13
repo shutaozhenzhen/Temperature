@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler() {
             public void handleMessage(Message message) {
-                boolean check=true;
+                boolean check = true;
                 // Log.v("LJTDL", handler.toString());
                 switch (message.what) {
                     case Socket:
@@ -175,19 +175,23 @@ public class MainActivity extends AppCompatActivity {
                         ((TextView) deal.getFragmentByClass(SettingFragment.class).getView().findViewById(R.id.time_label)).setText(message.obj.toString());
                         break;
                     case CHECK:
-                        check=(Boolean) message.obj;
+                        check = (Boolean) message.obj;
+                        break;
                     case TEMP_I:
-                        if(!check)break;
-                        HomeFragment homeFragment = ((HomeFragment) deal.getFragmentByClass(HomeFragment.class));
-                        List<String> stringList = homeFragment.getStringList();
-                        stringList.add(message.obj.toString());
-                        homeFragment.getAdapter().notifyItemInserted(stringList.size() - 1);
-                        homeFragment.getRecyclerView().scrollToPosition(stringList.size() - 1);
+                        if (check) {
+                            HomeFragment homeFragment = ((HomeFragment) deal.getFragmentByClass(HomeFragment.class));
+                            ((TextView) homeFragment.getView().findViewById(R.id.another_temperature_view_label)).setText(String.format("%.2f",message.obj));
+                            List<String> stringList = homeFragment.getStringList();
+                            stringList.add(message.obj.toString());
+                            homeFragment.getAdapter().notifyItemInserted(stringList.size() - 1);
+                            homeFragment.getRecyclerView().scrollToPosition(stringList.size() - 1);
+                        }
 
                         break;
                     case TEMP_O:
-                        if(!check)break;
-                        ((HomeFragment) deal.getFragmentByClass(HomeFragment.class)).setTemperature(Double.parseDouble(message.obj.toString()));
+                        if (check) {
+                            ((HomeFragment) deal.getFragmentByClass(HomeFragment.class)).setTemperature(Double.parseDouble(message.obj.toString()));
+                        }
                         break;
                 }
             }
