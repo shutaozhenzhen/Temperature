@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -80,7 +82,17 @@ public class HomeFragment extends Fragment {
         DealFragmentInID dealFragmentInID = new DealFragmentInID(R.id.temperature_view, fragmentManager);
         sliderFragment = new TemperatureSliderFragment();
         dealFragmentInID.replaceWithFragment(sliderFragment, sliderFragment.getClass().getName());
-       // view.findViewById(R.id.)
+        CheckBox checkBox = view.findViewById(R.id.checkBox);
+        checkBox.setChecked(true);
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                ( (MainActivity) getActivity()).getHandler().obtainMessage(MainActivity.CHECK,isChecked).sendToTarget();
+            }
+        });
+        if (checkBox.isChecked()) {
+
+        }
 
 
 /*        TemperatureChartFragment chartFragment = new TemperatureChartFragment();

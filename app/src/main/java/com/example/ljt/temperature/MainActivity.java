@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int TIME = 3;
     public static final int TEMP_I = 4;
     public static final int TEMP_O = 5;
+    public static final int CHECK = 6;
     private InputStream inputStream;
     private OutputStream outputStream;
     private NavigationDeal deal;
@@ -160,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler() {
             public void handleMessage(Message message) {
+                boolean check=true;
                 // Log.v("LJTDL", handler.toString());
                 switch (message.what) {
                     case Socket:
@@ -172,7 +174,10 @@ public class MainActivity extends AppCompatActivity {
                     case TIME:
                         ((TextView) deal.getFragmentByClass(SettingFragment.class).getView().findViewById(R.id.time_label)).setText(message.obj.toString());
                         break;
+                    case CHECK:
+                        check=(Boolean) message.obj;
                     case TEMP_I:
+                        if(!check)break;
                         HomeFragment homeFragment = ((HomeFragment) deal.getFragmentByClass(HomeFragment.class));
                         List<String> stringList = homeFragment.getStringList();
                         stringList.add(message.obj.toString());
@@ -181,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case TEMP_O:
+                        if(!check)break;
                         ((HomeFragment) deal.getFragmentByClass(HomeFragment.class)).setTemperature(Double.parseDouble(message.obj.toString()));
                         break;
                 }
