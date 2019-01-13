@@ -33,6 +33,21 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private List<String> stringList = new ArrayList<>();
     private TemperatureSliderFragment sliderFragment;
+    private StringAdapter adapter;
+
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
+
+    private RecyclerView recyclerView;
+
+    public StringAdapter getAdapter() {
+        return adapter;
+    }
+
+    public void setAdapter(StringAdapter adapter) {
+        this.adapter = adapter;
+    }
     //private List<Entry> entryList=new ArrayList<>();
 /*    public interface OnProgressChanged{
         void onProgressChanged(TemperatureSliderLayout slider, int progress, boolean fromUser);
@@ -51,9 +66,10 @@ public class HomeFragment extends Fragment {
     public void setStringList(List<String> stringList) {
         this.stringList = stringList;
     }
-    public void setTemperature(double temperature){
-        if( sliderFragment!=null)
-        sliderFragment.setValue(temperature);
+
+    public void setTemperature(double temperature) {
+        if (sliderFragment != null)
+            sliderFragment.setValue(temperature);
     }
 
     @Nullable
@@ -62,8 +78,9 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         DealFragmentInID dealFragmentInID = new DealFragmentInID(R.id.temperature_view, fragmentManager);
-         sliderFragment = new TemperatureSliderFragment();
+        sliderFragment = new TemperatureSliderFragment();
         dealFragmentInID.replaceWithFragment(sliderFragment, sliderFragment.getClass().getName());
+       // view.findViewById(R.id.)
 
 
 /*        TemperatureChartFragment chartFragment = new TemperatureChartFragment();
@@ -85,15 +102,15 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
 /*        stringList.add("try");
         stringList.add("try2");*/
-        StringAdapter adapter = new StringAdapter(stringList);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.show_recyclerView);
+        adapter = new StringAdapter(stringList);
+        recyclerView = (RecyclerView) view.findViewById(R.id.show_recyclerView);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
 
         return view;
     }
 
-    @Override
+/*    @Override
     public void onResume() {
         super.onResume();
         Log.d("LJTlog", "resume");
@@ -109,7 +126,7 @@ public class HomeFragment extends Fragment {
     public void onPause() {
         super.onPause();
         Log.d("LJTlog", "Pause");
-    }
+    }*/
     /*    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

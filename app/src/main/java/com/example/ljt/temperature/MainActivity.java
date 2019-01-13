@@ -27,6 +27,7 @@ import com.example.ljt.temperature.Misc.ToastInContext;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
@@ -172,7 +173,11 @@ public class MainActivity extends AppCompatActivity {
                         ((TextView) deal.getFragmentByClass(SettingFragment.class).getView().findViewById(R.id.time_label)).setText(message.obj.toString());
                         break;
                     case TEMP_I:
-                        ((HomeFragment) deal.getFragmentByClass(HomeFragment.class)).getStringList().add(message.obj.toString());
+                        HomeFragment homeFragment = ((HomeFragment) deal.getFragmentByClass(HomeFragment.class));
+                        List<String> stringList = homeFragment.getStringList();
+                        stringList.add(message.obj.toString());
+                        homeFragment.getAdapter().notifyItemInserted(stringList.size() - 1);
+                        homeFragment.getRecyclerView().scrollToPosition(stringList.size() - 1);
 
                         break;
                     case TEMP_O:
