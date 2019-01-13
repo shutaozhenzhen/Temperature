@@ -119,18 +119,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buzzer_label">
 
-                <com.example.ljt.temperature.Layout.SliderDiscreteLayout
-                    android:id="@+id/buzzer_slider"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/buzzer_switch"
-                    app:layout_constraintTop_toTopOf="parent" />
                 <!--
                        <SeekBar
                            android:id="@+id/buzzer_seekbar"
@@ -224,18 +212,6 @@
                            app:layout_constraintTop_toTopOf="@+id/LED_switch2" />
                            -->
 
-                <com.example.ljt.temperature.Layout.SliderDiscreteLayout
-                    android:id="@+id/LED_slider1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/LED_switch1"
-                    app:layout_constraintTop_toTopOf="parent" />
                 <!--
                        <SeekBar
                            android:id="@+id/LED_seekBar1"
@@ -260,21 +236,9 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:text="灯1开关："
-                    app:layout_constraintBottom_toBottomOf="@+id/LED_slider1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/LED_slider1" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/LED_light_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="亮度"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/LED_slider1"
-                    app:layout_constraintStart_toStartOf="@+id/LED_slider1"
-                    app:layout_constraintTop_toBottomOf="@+id/LED_slider1" />
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
 
