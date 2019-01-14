@@ -12,10 +12,10 @@ import com.example.ljt.temperature.MainActivity;
 import com.example.ljt.temperature.R;
 
 public class Settings {
-    SliderDiscreteLayout
+/*    SliderDiscreteLayout
             buzzer_slider,
             LED_slider1;
-            //LED_slider2;
+            //LED_slider2;*/
 
     Switch
 
@@ -44,8 +44,8 @@ public class Settings {
     }
 
     public void init(final View view) {
-        buzzer_slider = (SliderDiscreteLayout) view.findViewById(R.id.buzzer_slider);
-        LED_slider1 = (SliderDiscreteLayout) view.findViewById(R.id.LED_slider1);
+/*        buzzer_slider = (SliderDiscreteLayout) view.findViewById(R.id.buzzer_slider);
+        LED_slider1 = (SliderDiscreteLayout) view.findViewById(R.id.LED_slider1);*/
         //LED_slider2 = (SliderDiscreteLayout) view.findViewById(R.id.LED_slider2);
         bluetooth_switch = (Switch) view.findViewById(R.id.bluetooth_switch);
         LED_switch1 = (Switch) view.findViewById(R.id.LED_switch1);
@@ -112,7 +112,7 @@ public class Settings {
                 }
             }
         });
-        buzzer_slider.setOnSliderChangeListener(new SliderDiscreteLayout.OnSliderChangeListener() {
+/*        buzzer_slider.setOnSliderChangeListener(new SliderDiscreteLayout.OnSliderChangeListener() {
             @Override
             public void onProgressChanged(SliderDiscreteLayout slider, int progress, boolean fromUser) {
                 setBuzzerSlider(slider.getValue());
@@ -126,7 +126,7 @@ public class Settings {
                 setLedSlider1(slider.getValue());
                 //new  ToastInContext(getActivity()).toast("try");
             }
-        });
+        });*/
 /*
         LED_slider2.setOnSliderChangeListener(new SliderDiscreteLayout.OnSliderChangeListener() {
             @Override
@@ -136,7 +136,7 @@ public class Settings {
             }
         });*/
         discovery_button = (Button) view.findViewById(R.id.bluetooth_discovery_button);
-        buzzer_slider.setMode(1);
+/*        buzzer_slider.setMode(1);*/
 
     }
 
@@ -190,7 +190,7 @@ public class Settings {
         this.LED_switch2.setChecked(ledSwitch2);
     }*/
 
-    public Integer getBuzzerSlider() {
+/*    public Integer getBuzzerSlider() {
         return buzzer_slider.getValue();
     }
 
@@ -204,7 +204,7 @@ public class Settings {
 
     public void setLedSlider1(Integer ledSlider1) {
         this.LED_slider1.setValue(ledSlider1);
-    }
+    }*/
 
 /*    public Integer getLedSlider2() {
         return LED_slider2.getValue();

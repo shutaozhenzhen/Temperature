@@ -111,13 +111,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-/*        stringList.add("try");
-        stringList.add("try2");*/
+/*        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+*//*        stringList.add("try");
+        stringList.add("try2");*//*
         adapter = new StringAdapter(stringList);
         recyclerView = (RecyclerView) view.findViewById(R.id.show_recyclerView);
         recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
 
         return view;
     }
